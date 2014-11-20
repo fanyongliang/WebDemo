@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gyyx.java.beans.IUserInfo">
+	<insert id="add" parameterType="cn.gyyx.java.beans.UserInfo">
+		insert into
+		user_info_tb(info_nickname,info_gender,info_phone,info_email,info_question,info_answer)
+		values(#{info_nickname},#{info_gender},#{info_phone},#{info_email},#{info_question},#{info_answer})
+	</insert>
+	<delete id="deleteById" parameterType="int">
+		delete from user_info_tb
+		where info_id=#{info_id}
+	</delete>
+	<update id="update" parameterType="cn.gyyx.java.beans.UserInfo">
+		update user_info_tb set
+		info_nickname=#{info_nickname},info_gender=#{info_gender},info_phone=#{info_phone},info_email=#{info_email},info_question=#{info_question},info_answer=#{info_answer}
+		where info_id=#{info_id}
+	</update>
+	<select id="selectById" parameterType="int"
+		resultType="cn.gyyx.java.beans.UserInfo" resultMap="UserInfoResultMap">
+		select * from
+		user_info_tb where info_id=#{info_id}
+	</select>
+	<select id="selectAllUsers" resultType="cn.gyyx.java.beans.UserInfo" resultMap="UserInfoResultMap">
+		select * from user_info_tb
+	</select>
+	<resultMap id="UserInfoResultMap" type="cn.gyyx.java.beans.UserInfo">
+		<id property="info_id" column="info_id" />
+		<result property="info_nickname" column="info_nickname" />
+		<result property="info_gender" column="info_gender" />
+		<result property="info_phone" column="info_phone" />
+		<result property="info_email" column="info_email" />
+		<result property="info_question" column="info_question" />
+		<result property="info_answer" column="info_answer" />
+	</resultMap>
+</mapper>
