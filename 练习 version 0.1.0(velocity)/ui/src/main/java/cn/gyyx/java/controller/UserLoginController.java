@@ -137,7 +137,7 @@ public class UserLoginController {
 			return "list";
 		} else {
 			logger.info("用户名或密码错误!");
-			model.addAttribute("msg", "用户名或密码错误!");
+			model.addAttribute("msg", "Cookie已过期!");
 			return "login";
 		}
 	}
