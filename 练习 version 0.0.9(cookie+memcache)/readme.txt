@@ -47,7 +47,7 @@ version 0.0.3
 ，	--cn.gyyx.java.beans
 		--UserInfo.java
 ，	--cn.gyyx.java.bll
-		--ChangePasswordService.java
+		--ChangePasswordBLL.java
 ，	--cn.gyyx.java.controller
 		--HomeController.java
 		--UserRegisterController.java
@@ -97,7 +97,7 @@ version 0.0.5
 		--UserInfo.java
 		--UserLogin.java
 ，	--cn.gyyx.java.bll
-		--ChangePasswordService.java
+		--ChangePasswordBLL.java
 ，	--cn.gyyx.java.controller
 		--HomeController.java
 		--UserRegisterController.java
@@ -123,7 +123,7 @@ version 0.0.6
 		--UserInfo.java
 		--UserLogin.java
 ，	--cn.gyyx.java.bll
-		--ChangePasswordService.java
+		--ChangePasswordBLL.java
 ，	--cn.gyyx.java.controller
 		--HomeController.java
 		--UserRegisterController.java
