@@ -58,41 +58,44 @@ public class UserLoginController {
 			HttpServletRequest request, HttpServletResponse response) {
 		List<UserInfo> users = userInfoService.selectAllUsers();
 		Cookie[] cookies = request.getCookies();
-		logger.info("Cookie数量:" + cookies.length);
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("accountuuid")) {
-				logger.info("-------true & false-----:"
-						+ cookie.getName().equals("uuid"));
-				String value = cookie.getValue();
-				MemcachedClientBuilder builder = new XMemcachedClientBuilder(
-						"127.0.0.1:11211");
-				try {
-					MemcachedClient client = builder.build();
-					if (client.get(value) == null) {
-						logger.info("memcache中不存在信息!");
-						model.addAttribute("msg", "Cookie已经过期，重新登录!");
-						System.out.println("-------->msg显示了");
-						return "login";
-					} else {
-						//
-						model.addAttribute("users", users);
-						model.addAttribute("account",
-								userLogin.getUser_account());
-						//
-						int count = userInfoService.selectCount();
-						logger.info("-------------总共的user数量--------------:"
-								+ count);
-						int pages = (count % 5) == 0 ? (count / 5)
-								: (count / 5 + 1);
-						logger.info("-------------总共的页数--------------:" + pages);
-						model.addAttribute("pages", pages);
-						model.addAttribute("page", 1);
-						model.addAttribute("num", 5);
-						//
-						return "list";
+		if (cookies != null) {
+			logger.info("Cookie数量:" + cookies.length);
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("accountuuid")) {
+					logger.info("-------true & false-----:"
+							+ cookie.getName().equals("uuid"));
+					String value = cookie.getValue();
+					MemcachedClientBuilder builder = new XMemcachedClientBuilder(
+							"127.0.0.1:11211");
+					try {
+						MemcachedClient client = builder.build();
+						if (client.get(value) == null) {
+							logger.info("memcache中不存在信息!");
+							model.addAttribute("msg", "Cookie已经过期，重新登录!");
+							System.out.println("-------->msg显示了");
+							return "login";
+						} else {
+							//
+							model.addAttribute("users", users);
+							model.addAttribute("account",
+									userLogin.getUser_account());
+							//
+							int count = userInfoService.selectCount();
+							logger.info("-------------总共的user数量--------------:"
+									+ count);
+							int pages = (count % 5) == 0 ? (count / 5)
+									: (count / 5 + 1);
+							logger.info("-------------总共的页数--------------:"
+									+ pages);
+							model.addAttribute("pages", pages);
+							model.addAttribute("page", 1);
+							model.addAttribute("num", 5);
+							//
+							return "list";
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
 			}
 		}
