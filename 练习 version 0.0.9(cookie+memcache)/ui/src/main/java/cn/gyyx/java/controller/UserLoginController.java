@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------- 
- * °æÈ¨ËùÓĞ£º±±¾©¹âÓîÔÚÏß¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾ 
- * ×÷Õß£ºfanyongliang
- * ÁªÏµ·½Ê½£ºfanyongliang@gyyx.cn 
- * ´´½¨Ê±¼ä£º 2014Äê11ÔÂ18ÈÕ 
- * °æ±¾ºÅ£ºv1.0 
- * ±¾ÀàÖ÷ÒªÓÃÍ¾ÃèÊö£º 
- * ¹ÜÀíÓÃ»§µÇÂ¼µÄ¿ØÖÆÆ÷
+ * ç‰ˆæƒæ‰€æœ‰ï¼šåŒ—äº¬å…‰å®‡åœ¨çº¿ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸ 
+ * ä½œè€…ï¼šfanyongliang
+ * è”ç³»æ–¹å¼ï¼šfanyongliang@gyyx.cn 
+ * åˆ›å»ºæ—¶é—´ï¼š 2014å¹´11æœˆ18æ—¥ 
+ * ç‰ˆæœ¬å·ï¼šv1.0 
+ * æœ¬ç±»ä¸»è¦ç”¨é€”æè¿°ï¼š 
+ * ç®¡ç†ç”¨æˆ·ç™»å½•çš„æ§åˆ¶å™¨
 -------------------------------------------------------------------------*/
 
 package cn.gyyx.java.controller;
@@ -37,17 +37,17 @@ import cn.gyyx.java.service.UserInfoService;
 @RequestMapping("Login")
 public class UserLoginController {
 	/**
-	 * ´´½¨UserInfoService¶ÔÏóÊµÀı
+	 * åˆ›å»ºUserInfoServiceå¯¹è±¡å®ä¾‹
 	 */
 	private static UserInfoService userInfoService = new UserInfoService();
 	/**
-	 * ´´½¨logger¿ØÖÆÌ¨ÈÕÖ¾ÏÔÊ¾¶ÔÏó
+	 * åˆ›å»ºloggeræ§åˆ¶å°æ—¥å¿—æ˜¾ç¤ºå¯¹è±¡
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserLoginController.class);
 
 	/**
-	 * ÑéÖ¤ÓÃ»§µÇÂ¼
+	 * éªŒè¯ç”¨æˆ·ç™»å½•
 	 * 
 	 * @param userLogin
 	 * @param model
@@ -58,7 +58,7 @@ public class UserLoginController {
 			HttpServletRequest request, HttpServletResponse response) {
 		List<UserInfo> users = userInfoService.selectAllUsers();
 		Cookie[] cookies = request.getCookies();
-		logger.info("CookieÊıÁ¿:" + cookies.length);
+		logger.info("Cookieæ•°é‡:" + cookies.length);
 		for (Cookie cookie : cookies) {
 			if (cookie.getName().equals("accountuuid")) {
 				logger.info("-------true & false-----:"
@@ -69,8 +69,8 @@ public class UserLoginController {
 				try {
 					MemcachedClient client = builder.build();
 					if (client.get(value) == null) {
-						logger.info("memcacheÖĞ²»´æÔÚĞÅÏ¢!");
-						model.addAttribute("msg", "CookieÒÑ¾­¹ıÆÚ£¬ÖØĞÂµÇÂ¼!");
+						logger.info("memcacheä¸­ä¸å­˜åœ¨ä¿¡æ¯!");
+						model.addAttribute("msg", "Cookieå·²ç»è¿‡æœŸï¼Œé‡æ–°ç™»å½•!");
 						return "login";
 					} else {
 						//
@@ -79,11 +79,11 @@ public class UserLoginController {
 								userLogin.getUser_account());
 						//
 						int count = userInfoService.selectCount();
-						logger.info("-------------×Ü¹²µÄuserÊıÁ¿--------------:"
+						logger.info("-------------æ€»å…±çš„useræ•°é‡--------------:"
 								+ count);
 						int pages = (count % 5) == 0 ? (count / 5)
 								: (count / 5 + 1);
-						logger.info("-------------×Ü¹²µÄÒ³Êı--------------:" + pages);
+						logger.info("-------------æ€»å…±çš„é¡µæ•°--------------:" + pages);
 						model.addAttribute("pages", pages);
 						model.addAttribute("page", 1);
 						model.addAttribute("num", 5);
@@ -123,23 +123,23 @@ public class UserLoginController {
 			model.addAttribute("account", userLogin.getUser_account());
 			//
 			int count = userInfoService.selectCount();
-			logger.info("-------------×Ü¹²µÄuserÊıÁ¿--111-----------:" + count);
+			logger.info("-------------æ€»å…±çš„useræ•°é‡--111-----------:" + count);
 			int pages = (count % 5) == 0 ? (count / 5) : (count / 5 + 1);
-			logger.info("-------------×Ü¹²µÄÒ³Êı----111----------:" + pages);
+			logger.info("-------------æ€»å…±çš„é¡µæ•°----111----------:" + pages);
 			model.addAttribute("pages", pages);
 			model.addAttribute("page", 1);
 			model.addAttribute("num", 5);
 			//
 			return "list";
 		} else {
-			logger.info("ÓÃ»§Ãû»òÃÜÂë´íÎó!");
-			model.addAttribute("msg", "ÓÃ»§Ãû»òÃÜÂë´íÎó!");
+			logger.info("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
+			model.addAttribute("msg", "ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯!");
 			return "login";
 		}
 	}
 
 	/**
-	 * Ìø×ªµ½µÇÂ¼Ò³Ãæ
+	 * è·³è½¬åˆ°ç™»å½•é¡µé¢
 	 * 
 	 * @return
 	 */

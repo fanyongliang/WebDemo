@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------- 
- * °æÈ¨ËùÓĞ£º±±¾©¹âÓîÔÚÏß¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾ 
- * ×÷Õß£ºfanyongliang
- * ÁªÏµ·½Ê½£ºfanyongliang@gyyx.cn 
- * ´´½¨Ê±¼ä£º 2014Äê11ÔÂ18ÈÕ 
- * °æ±¾ºÅ£ºv1.0 
- * ±¾ÀàÖ÷ÒªÓÃÍ¾ÃèÊö£º 
- * ¹ÜÀíÓÃ»§×¢²áµÄ¿ØÖÆÆ÷
+ * ç‰ˆæƒæ‰€æœ‰ï¼šåŒ—äº¬å…‰å®‡åœ¨çº¿ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸ 
+ * ä½œè€…ï¼šfanyongliang
+ * è”ç³»æ–¹å¼ï¼šfanyongliang@gyyx.cn 
+ * åˆ›å»ºæ—¶é—´ï¼š 2014å¹´11æœˆ18æ—¥ 
+ * ç‰ˆæœ¬å·ï¼šv1.0 
+ * æœ¬ç±»ä¸»è¦ç”¨é€”æè¿°ï¼š 
+ * ç®¡ç†ç”¨æˆ·æ³¨å†Œçš„æ§åˆ¶å™¨
 -------------------------------------------------------------------------*/
 
 package cn.gyyx.java.controller;
@@ -26,17 +26,17 @@ import cn.gyyx.java.service.UserInfoService;
 @RequestMapping("Register")
 public class UserRegisterController {
 	/**
-	 * ´´½¨UserInfoService¶ÔÏóÊµÀı
+	 * åˆ›å»ºUserInfoServiceå¯¹è±¡å®ä¾‹
 	 */
 	private static UserInfoService userInfoService = new UserInfoService();
 	/**
-	 * ´´½¨logger¿ØÖÆÌ¨ÈÕÖ¾ÏÔÊ¾¶ÔÏó
+	 * åˆ›å»ºloggeræ§åˆ¶å°æ—¥å¿—æ˜¾ç¤ºå¯¹è±¡
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserRegisterController.class);
 	
 	/**
-	 * ÓÃ»§×¢²áÑéÖ¤£¬ÕıÈ·Ìø×ªµ½Ö÷Ò³Ãæ
+	 * ç”¨æˆ·æ³¨å†ŒéªŒè¯ï¼Œæ­£ç¡®è·³è½¬åˆ°ä¸»é¡µé¢
 	 * @param userInfo
 	 * @param model
 	 * @return
@@ -54,8 +54,8 @@ public class UserRegisterController {
 			logger.info("add:" + a);
 			return "login";
 		} else {
-			logger.info("ÓÃ»§ÃûÒÑ´æÔÚ!");
-			model.addAttribute("msg", "ÓÃ»§ÃûÒÑ´æÔÚ,ÖØĞÂÊäÈë");
+			logger.info("ç”¨æˆ·åå·²å­˜åœ¨!");
+			model.addAttribute("msg", "ç”¨æˆ·åå·²å­˜åœ¨,é‡æ–°è¾“å…¥");
 			model.addAttribute("name",userInfo.getInfo_name() );
 			model.addAttribute("gender", userInfo.getInfo_gender());
 			model.addAttribute("card", userInfo.getInfo_card());
@@ -67,7 +67,7 @@ public class UserRegisterController {
 		}
 	}
 	/**
-	 * Ìø×ªµ½×¢²áÒ³Ãæ
+	 * è·³è½¬åˆ°æ³¨å†Œé¡µé¢
 	 * @return
 	 */
 	@RequestMapping("/show")

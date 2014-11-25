@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------- 
- * °æÈ¨ËùÓĞ£º±±¾©¹âÓîÔÚÏß¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾ 
- * ×÷Õß£ºfanyongliang
- * ÁªÏµ·½Ê½£ºfanyongliang@gyyx.cn 
- * ´´½¨Ê±¼ä£º 2014Äê11ÔÂ18ÈÕ 
- * °æ±¾ºÅ£ºv1.0 
- * ±¾ÀàÖ÷ÒªÓÃÍ¾ÃèÊö£º 
- * ¹ÜÀí½øĞĞ·ÖÒ³²éÑ¯µÄ¿ØÖÆÆ÷
+ * ç‰ˆæƒæ‰€æœ‰ï¼šåŒ—äº¬å…‰å®‡åœ¨çº¿ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸ 
+ * ä½œè€…ï¼šfanyongliang
+ * è”ç³»æ–¹å¼ï¼šfanyongliang@gyyx.cn 
+ * åˆ›å»ºæ—¶é—´ï¼š 2014å¹´11æœˆ18æ—¥ 
+ * ç‰ˆæœ¬å·ï¼šv1.0 
+ * æœ¬ç±»ä¸»è¦ç”¨é€”æè¿°ï¼š 
+ * ç®¡ç†è¿›è¡Œåˆ†é¡µæŸ¥è¯¢çš„æ§åˆ¶å™¨
 -------------------------------------------------------------------------*/
 
 package cn.gyyx.java.controller;
@@ -28,17 +28,17 @@ import cn.gyyx.java.service.UserInfoService;
 @RequestMapping("Page")
 public class UserPageController {
 	/**
-	 * ´´½¨UserInfoService¶ÔÏóÊµÀı
+	 * åˆ›å»ºUserInfoServiceå¯¹è±¡å®ä¾‹
 	 */
 	private static UserInfoService userInfoService = new UserInfoService();
 	/**
-	 * ´´½¨logger¿ØÖÆÌ¨ÈÕÖ¾ÏÔÊ¾¶ÔÏó
+	 * åˆ›å»ºloggeræ§åˆ¶å°æ—¥å¿—æ˜¾ç¤ºå¯¹è±¡
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserPageController.class);
 	
 	/**
-	 * ½øĞĞ·ÖÒ³²éÑ¯
+	 * è¿›è¡Œåˆ†é¡µæŸ¥è¯¢
 	 * @param page
 	 * @param model
 	 * @return
@@ -46,21 +46,21 @@ public class UserPageController {
 	@RequestMapping(value = "/pageIndex/{page}", method = RequestMethod.GET)
 	public String find(@PathVariable int page, Model model) {
 		PageInfo pageOne = new PageInfo();
-		logger.info("µ±Ç°µÄPage:"+page);
+		logger.info("å½“å‰çš„Page:"+page);
 		List<UserInfo> users = userInfoService.selectByPage(page);
 		pageOne.setPageIndex(page);
-		logger.info("¸üĞÂµÄPage:"+page);
+		logger.info("æ›´æ–°çš„Page:"+page);
 		logger.info(users.toString());
 		model.addAttribute("page", pageOne.getPageIndex());
-		logger.info("----------»ñÈ¡pageIndex--------------:"+pageOne.getPageIndex());
+		logger.info("----------è·å–pageIndex--------------:"+pageOne.getPageIndex());
 		model.addAttribute("users", users);
 		int num = users.size();
-		logger.info("-------------×Ü¹²²éµ½µÄuserÊıÁ¿--------------:"+num);
+		logger.info("-------------æ€»å…±æŸ¥åˆ°çš„useræ•°é‡--------------:"+num);
 		model.addAttribute("num", num);
 		int count = userInfoService.selectCount();
-		logger.info("-------------×Ü¹²µÄuserÊıÁ¿--------------:"+count);
+		logger.info("-------------æ€»å…±çš„useræ•°é‡--------------:"+count);
 		int pages = (count%5)==0?(count/5):(count/5+1);
-		logger.info("-------------×Ü¹²µÄÒ³Êı--------------:"+pages);
+		logger.info("-------------æ€»å…±çš„é¡µæ•°--------------:"+pages);
 		model.addAttribute("pages", pages);
 		return "list";
 

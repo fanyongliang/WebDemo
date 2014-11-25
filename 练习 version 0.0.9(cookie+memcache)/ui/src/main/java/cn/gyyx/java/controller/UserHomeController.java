@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------- 
- * °æÈ¨ËùÓĞ£º±±¾©¹âÓîÔÚÏß¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾ 
- * ×÷Õß£ºfanyongliang
- * ÁªÏµ·½Ê½£ºfanyongliang@gyyx.cn 
- * ´´½¨Ê±¼ä£º 2014Äê11ÔÂ18ÈÕ 
- * °æ±¾ºÅ£ºv1.0 
- * ±¾ÀàÖ÷ÒªÓÃÍ¾ÃèÊö£º 
- * ´´½¨SpringMVCÏîÄ¿Ê±Éú³ÉµÄ¿ØÖÆÆ÷,ÓÃÀ´²âÊÔ
+ * ç‰ˆæƒæ‰€æœ‰ï¼šåŒ—äº¬å…‰å®‡åœ¨çº¿ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸ 
+ * ä½œè€…ï¼šfanyongliang
+ * è”ç³»æ–¹å¼ï¼šfanyongliang@gyyx.cn 
+ * åˆ›å»ºæ—¶é—´ï¼š 2014å¹´11æœˆ18æ—¥ 
+ * ç‰ˆæœ¬å·ï¼šv1.0 
+ * æœ¬ç±»ä¸»è¦ç”¨é€”æè¿°ï¼š 
+ * åˆ›å»ºSpringMVCé¡¹ç›®æ—¶ç”Ÿæˆçš„æ§åˆ¶å™¨,ç”¨æ¥æµ‹è¯•
 -------------------------------------------------------------------------*/
 
 package cn.gyyx.java.controller;
@@ -26,13 +26,13 @@ import cn.gyyx.java.beans.UserInfo;
 @Controller
 public class UserHomeController {
 	/**
-	 * ´´½¨Ò»¸öÓÃÓÚÏÔÊ¾¿ØÖÆÌ¨ÈÕÖ¾ĞÅÏ¢µÄlogger¶ÔÏó
+	 * åˆ›å»ºä¸€ä¸ªç”¨äºæ˜¾ç¤ºæ§åˆ¶å°æ—¥å¿—ä¿¡æ¯çš„loggerå¯¹è±¡
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserHomeController.class);
 
 	/**
-	 * SpringMVC×Ô´ø²âÊÔÀı×Ó
+	 * SpringMVCè‡ªå¸¦æµ‹è¯•ä¾‹å­
 	 * @param locale
 	 * @param model
 	 * @return
@@ -53,7 +53,7 @@ public class UserHomeController {
 	}
 	
 	/**
-	 * ×Ô¼ºÓÃÀ´²âÊÔµÄÀı×Ó
+	 * è‡ªå·±ç”¨æ¥æµ‹è¯•çš„ä¾‹å­
 	 * @param model
 	 * @return
 	 */

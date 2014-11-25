@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------------- 
- * °æÈ¨ËùÓĞ£º±±¾©¹âÓîÔÚÏß¿Æ¼¼ÓĞÏŞÔğÈÎ¹«Ë¾ 
- * ×÷Õß£ºfanyongliang
- * ÁªÏµ·½Ê½£ºfanyongliang@gyyx.cn 
- * ´´½¨Ê±¼ä£º 2014Äê11ÔÂ18ÈÕ 
- * °æ±¾ºÅ£ºv1.0 
- * ±¾ÀàÖ÷ÒªÓÃÍ¾ÃèÊö£º 
- * ¹ÜÀíĞÅÏ¢¼ìË÷µÄ¿ØÖÆÆ÷
+ * ç‰ˆæƒæ‰€æœ‰ï¼šåŒ—äº¬å…‰å®‡åœ¨çº¿ç§‘æŠ€æœ‰é™è´£ä»»å…¬å¸ 
+ * ä½œè€…ï¼šfanyongliang
+ * è”ç³»æ–¹å¼ï¼šfanyongliang@gyyx.cn 
+ * åˆ›å»ºæ—¶é—´ï¼š 2014å¹´11æœˆ18æ—¥ 
+ * ç‰ˆæœ¬å·ï¼šv1.0 
+ * æœ¬ç±»ä¸»è¦ç”¨é€”æè¿°ï¼š 
+ * ç®¡ç†ä¿¡æ¯æ£€ç´¢çš„æ§åˆ¶å™¨
 -------------------------------------------------------------------------*/
 
 package cn.gyyx.java.controller;
@@ -27,17 +27,17 @@ import cn.gyyx.java.service.UserInfoService;
 @RequestMapping("Search")
 public class UserSearchController {
 	/**
-	 * ´´½¨UserInfoService¶ÔÏóÊµÀı
+	 * åˆ›å»ºUserInfoServiceå¯¹è±¡å®ä¾‹
 	 */
 	private static UserInfoService userInfoService = new UserInfoService();
 	/**
-	 * ´´½¨logger¿ØÖÆÌ¨ÈÕÖ¾ÏÔÊ¾¶ÔÏó
+	 * åˆ›å»ºloggeræ§åˆ¶å°æ—¥å¿—æ˜¾ç¤ºå¯¹è±¡
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserSearchController.class);
 	
 	/**
-	 * ¸ù¾İĞÅÏ¢ÄÚÈİ½øĞĞ¼ìË÷
+	 * æ ¹æ®ä¿¡æ¯å†…å®¹è¿›è¡Œæ£€ç´¢
 	 * @param key
 	 * @param model
 	 * @return
