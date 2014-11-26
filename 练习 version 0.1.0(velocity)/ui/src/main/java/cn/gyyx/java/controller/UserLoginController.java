@@ -63,7 +63,7 @@ public class UserLoginController {
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("accountuuid")) {
 					logger.info("-------true & false-----:"
-							+ cookie.getName().equals("uuid"));
+							+ cookie.getName().equals("accountuuid"));
 					String value = cookie.getValue();
 					MemcachedClientBuilder builder = new XMemcachedClientBuilder(
 							"127.0.0.1:11211");
@@ -71,14 +71,11 @@ public class UserLoginController {
 						MemcachedClient client = builder.build();
 						if (client.get(value) == null) {
 							logger.info("memcache中不存在信息!");
-							model.addAttribute("msg", "Cookie已经过期，重新登录!");
-							System.out.println("-------->msg显示了");
+							model.addAttribute("msg", "memcache中不存在信息!");
 							return "login";
 						} else {
 							//
 							model.addAttribute("users", users);
-							model.addAttribute("account",
-									userLogin.getUser_account());
 							//
 							int count = userInfoService.selectCount();
 							logger.info("-------------总共的user数量--------------:"
@@ -96,6 +93,10 @@ public class UserLoginController {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+				}else{
+					logger.info("Cookie不存在或者已经过期!");
+					model.addAttribute("msg", "Cookie不存在或者已经过期!");
+					return "login";
 				}
 			}
 		}
@@ -137,7 +138,7 @@ public class UserLoginController {
 			return "list";
 		} else {
 			logger.info("用户名或密码错误!");
-			model.addAttribute("msg", "Cookie已过期!");
+			model.addAttribute("msg", "请重新登录!");
 			return "login";
 		}
 	}
